@@ -189,3 +189,34 @@ npm run dev
 ### Database
 
 * **MongoDB (Atlas)**
+
+---
+
+## Admin Bootstrap Information
+
+When you start the backend for the first time, the system automatically creates a default Admin account using a bootstrap script.
+
+### Default Admin Credentials
+
+Email: admin@example.com
+Password: Admin@123
+
+This admin account is required to:
+
+Manage employees
+
+Manage users
+
+Assign roles
+
+Access admin-only dashboards
+
+### API to Create Admin Manually
+
+If the admin is not created automatically, you can manually trigger the admin creation API:
+
+POST /api/auth/create-admin
+
+No input body is required.
+
+This will create the default admin user.
