@@ -198,25 +198,23 @@ When you start the backend for the first time, the system automatically creates 
 
 ### Default Admin Credentials
 
+```bash
 Email: admin@example.com
 Password: Admin@123
+```
 
-This admin account is required to:
+## This admin account is required to:
 
-Manage employees
-
-Manage users
-
-Assign roles
-
-Access admin-only dashboards
+* **Manage employees**
+* **Manage users**
+* **Assign roles**
+* **Access admin-only dashboards**
 
 ### API to Create Admin Manually
 
 If the admin is not created automatically, you can manually trigger the admin creation API:
 
-POST /api/auth/create-admin
+###POST ```bash /api/auth/create-admin```
 
-No input body is required.
 
 This will create the default admin user.
