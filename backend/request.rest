@@ -44,3 +44,15 @@ Content-Type: application/json
   "password": "Admin@123"
 }
 
+### Create User (Admin Only)
+POST http://localhost:5000/api/admin/create-user
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5MjZkN2JkZTQ3OGRkYTA0MzBmNDZmOCIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc2NDE3MjQzNCwiZXhwIjoxNzY0MjU4ODM0fQ.XSvVvgUOsdQ1fVoF6U6OliSCjZuRQoAG6JH6P0HlL90
+Content-Type: application/json
+
+{
+  "name": "New Admin",
+  "email": "newadmin@example.com",
+  "password": "Admin@123",
+  "role": "admin"
+}
+
