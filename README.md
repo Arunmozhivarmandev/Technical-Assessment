@@ -214,7 +214,7 @@ Password: Admin@123
 
 If the admin is not created automatically, you can manually trigger the admin creation API:
 
-###POST ```bash /api/auth/create-admin```
+### POST ```bash /api/auth/create-admin```
 
 
 This will create the default admin user.
