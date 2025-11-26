@@ -1,16 +1,12 @@
-import express from "express"
+import app from "./app";
+import { connectDB } from "./config/db";
+import { adminBootstrap } from "./scripts/admin.bootstrap";
 
-const app = express();
+const PORT = process.env.PORT || 4000;
 
+// Connect DB
+connectDB();
+adminBootstrap();
 
-// PORT
-const PORT = process.env.PORT || 5000;
-
-
-app.get("/", (req, res) => {
-res.json("Server is running")
-})
-
-app.listen(PORT, () => {
-    console.log(`Server is running on port ${PORT}`);   
-});
+// Start Server
+app.listen(PORT, () => console.log(`🚀 Server running on port ${PORT}`));
