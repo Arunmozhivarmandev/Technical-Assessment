@@ -1,0 +1,46 @@
+POST http://localhost:5000/api/auth/register
+Content-Type: application/json
+
+{
+  "name": "User",
+  "email": "user@example.com",
+  "password": "user123",
+  "role": "user"
+}
+
+### Login User
+POST http://localhost:5000/api/auth/login
+Content-Type: application/json
+
+{
+  "email": "user@example.com",
+  "password": "user123"
+}
+
+### Create Employee (Admin Only)
+
+POST http://localhost:5000/api/employees
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5MjZhMzJkOWZkZTlmMGRmMWZmNDFkZiIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc2NDE0MDYxMCwiZXhwIjoxNzY0MjI3MDEwfQ.s-PzjaYWMtAnAKYygcPxPTHPGwmYk84JGGynXi8Vafk
+Content-Type: application/json
+
+{
+  "name": "John Doe",
+  "email": "john@example.com",
+  "phone": "9876543210",
+  "designation": "Software Engineer",
+  "salary": 45000
+}
+
+### Get All Employees (Search, Filter, Sort, Pagination)
+GET http://localhost:5000/api/employees?page=1&limit=10&search=john&sort=salary:desc
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5MjZiZmM0NjI2MDE1NzgwMzdjNDE0ZCIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc2NDE1MTQxMiwiZXhwIjoxNzY0MjM3ODEyfQ.U57y4pEiCRE4Y_TVGnp6X9YCJuRVoK3olFfnuJUxCEU
+
+### Login as Admin (Bootstrap admin)
+POST http://localhost:5000/api/auth/login
+Content-Type: application/json
+
+{
+  "email": "admin@example.com",
+  "password": "Admin@123"
+}
+
