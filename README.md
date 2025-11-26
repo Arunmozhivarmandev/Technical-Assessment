@@ -298,7 +298,4 @@ Employees
   - Auth: JWT required and role `admin`
   - Response: 200 with `{ message: "Employee deleted" }` or 404 if not found.
 
-Authentication / Token notes
 
-- After successful login or register, the server returns a JWT in the response body and also sets an httpOnly cookie named `token`.
-- Protected endpoints require the JWT in the `Authorization` header in the form `Bearer <token>`.
