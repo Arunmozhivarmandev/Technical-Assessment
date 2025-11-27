@@ -18,10 +18,6 @@ export function DashboardLayout({ children }: { children: React.ReactNode }) {
     return <div className="flex items-center justify-center min-h-screen">Loading...</div>
   }
 
-  if (!user) {
-    router.push("/login")
-    return null
-  }
 
   const handleLogout = () => {
     logout()
@@ -30,7 +26,7 @@ export function DashboardLayout({ children }: { children: React.ReactNode }) {
 
   return (
     <div className="flex h-screen bg-background">
-      <Sidebar isOpen={sidebarOpen} onClose={() => setSidebarOpen(false)} />
+      <Sidebar isOpen={sidebarOpen} role={user?.role || ""} onClose={() => setSidebarOpen(false)} />
 
       <div className="flex-1 flex flex-col overflow-hidden">
         {/* Header */}
@@ -46,8 +42,8 @@ export function DashboardLayout({ children }: { children: React.ReactNode }) {
 
           <div className="flex items-center gap-4">
             <div className="text-right hidden sm:block">
-              <p className="text-sm font-medium text-foreground">{user.name}</p>
-              <p className="text-xs text-muted-foreground">{user.email}</p>
+              <p className="text-sm font-medium text-foreground">{user?.name}</p>
+              <p className="text-xs text-muted-foreground">{user?.email}</p>
             </div>
             <Button onClick={handleLogout} variant="outline" size="sm" className="h-9 bg-transparent">
               Logout

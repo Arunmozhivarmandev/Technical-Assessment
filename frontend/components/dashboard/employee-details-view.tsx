@@ -22,7 +22,7 @@ interface Employee {
   designation: string
   salary: number
   createdAt: string
-  profileImage:string,
+  profileImage: string,
   updatedAt: string
 }
 
@@ -38,7 +38,7 @@ export function EmployeeDetailsView({ employeeId }: EmployeeDetailsViewProps) {
         const response = await employeeAPI.getById(employeeId)
         setEmployee(response.data)
       } catch (err: any) {
-        setError(err.response?.data?.message || "Failed to load employee")
+        setError(err?.message || "Failed to load employee")
       } finally {
         setLoading(false)
       }
@@ -87,7 +87,7 @@ export function EmployeeDetailsView({ employeeId }: EmployeeDetailsViewProps) {
           <h1 className="text-3xl font-bold text-foreground">Employee Details</h1>
         </div>
         <div className="flex gap-3">
-          
+
           <Link href="/dashboard">
             <Button variant="outline">Back</Button>
           </Link>
@@ -101,11 +101,13 @@ export function EmployeeDetailsView({ employeeId }: EmployeeDetailsViewProps) {
             {/* Profile */}
             <div className="md:col-span-1 flex flex-col items-center">
               <Avatar className="h-32 w-32 mb-4">
-                <AvatarImage src={employee.profileImage || "/placeholder.svg"} alt={employee.name} />
+                <AvatarImage src={employee.profileImage || "/placeholder.svg"} alt={employee.name} className="w-full h-full object-cover object-center"
+                />
                 <AvatarFallback className="bg-primary text-primary-foreground text-2xl">
                   {getInitials(employee.name)}
                 </AvatarFallback>
               </Avatar>
+
               <h2 className="text-2xl font-bold text-foreground text-center">{employee.name}</h2>
               <p className="text-muted-foreground text-center mt-1">{employee.designation}</p>
             </div>
@@ -133,7 +135,7 @@ export function EmployeeDetailsView({ employeeId }: EmployeeDetailsViewProps) {
                   <p className="text-foreground font-semibold">${employee.salary.toLocaleString()}</p>
                 </div>
 
-            
+
               </div>
             </div>
           </div>

@@ -40,7 +40,7 @@ export function EmployeeTable({ employees, onDelete, hideActions }: EmployeeTabl
           <th className="px-6 py-3 text-left text-sm font-semibold text-foreground">Email</th>
           <th className="px-6 py-3 text-left text-sm font-semibold text-foreground">Designation</th>
           <th className="px-6 py-3 text-left text-sm font-semibold text-foreground">Salary</th>
-          { !hideActions && <th className="px-6 py-3 text-right text-sm font-semibold text-foreground">Actions</th>}
+          <th className="px-6 py-3 text-right text-sm font-semibold text-foreground">Actions</th>
         </tr>
       </thead>
       <tbody>
@@ -66,31 +66,33 @@ export function EmployeeTable({ employees, onDelete, hideActions }: EmployeeTabl
             <td className="px-6 py-4 text-sm text-foreground">{employee.email}</td>
             <td className="px-6 py-4 text-sm text-foreground">{employee.designation}</td>
             <td className="px-6 py-4 text-sm font-medium text-foreground">${employee.salary.toLocaleString()}</td>
-             { !hideActions &&
+
             <td className="px-6 py-4 text-right">
-            
+
               <div className="flex items-center justify-end gap-2">
                 <Link href={`/dashboard/employees/${employee.id}`}>
                   <Button size="sm" variant="outline" className="h-8 w-8 p-0 bg-transparent" title="View Details">
                     <Eye className="w-4 h-4" />
                   </Button>
                 </Link>
-                <Link href={`/dashboard/employees/${employee.id}/edit`}>
-                  <Button size="sm" variant="outline" className="h-8 w-8 p-0 bg-transparent" title="Edit">
-                    <Edit className="w-4 h-4" />
-                  </Button>
-                </Link>
-                <Button
-                  size="sm"
-                  variant="outline"
-                  className="h-8 w-8 p-0 text-destructive hover:text-destructive bg-transparent"
-                  onClick={() => onDelete(employee.id)}
-                  title="Delete"
-                >
-                  <Trash2 className="w-4 h-4" />
-                </Button>
+                {hideActions && (
+                  <>
+                    <Link href={`/dashboard/employees/${employee.id}/edit`}>
+                      <Button size="sm" variant="outline" className="h-8 w-8 p-0 bg-transparent" title="Edit">
+                        <Edit className="w-4 h-4" />
+                      </Button>
+                    </Link>
+                    <Button
+                      size="sm"
+                      variant="outline"
+                      className="h-8 w-8 p-0 text-destructive hover:text-destructive bg-transparent"
+                      onClick={() => onDelete(employee.id)}
+                      title="Delete"
+                    >
+                      <Trash2 className="w-4 h-4" />
+                    </Button></>)}
               </div>
-            </td>}
+            </td>
           </tr>
         ))}
       </tbody>

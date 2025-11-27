@@ -71,7 +71,7 @@ export function AddEmployeeForm() {
       await employeeAPI.create(formData)
       router.push("/dashboard")
     } catch (err: any) {
-      setError(err.response?.data?.message || "Failed to add employee")
+      setError(err?.message || "Failed to add employee")
     }
   }
 

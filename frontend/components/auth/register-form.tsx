@@ -66,7 +66,7 @@ export function RegisterForm() {
       login(response.token, response.user)
       router.push("/dashboard")
     } catch (err: any) {
-      setError(err.response?.data?.message || "Registration failed")
+      setError(err?.message || "Registration failed")
     } finally {
       setLoading(false)
     }

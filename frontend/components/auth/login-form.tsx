@@ -55,10 +55,12 @@ export function LoginForm() {
     setLoading(true)
     try {
       const response = await authAPI.login({ email, password })
-      login(response.token, response.user)
-      router.push("/dashboard")
+      await login(response.token, response.user)
+      // Use full page navigation so Set-Cookie headers from the server action are applied
+      window.location.href = "/dashboard"
     } catch (err: any) {
-      setError(err.response?.data?.message || "Login failed")
+      console.log(err)
+      setError(err?.message || "Login failed")
     } finally {
       setLoading(false)
     }

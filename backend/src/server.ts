@@ -9,4 +9,4 @@ connectDB();
 adminBootstrap();
 console.log("Loaded MONGO_URI =", process.env.MONGO_URI);
 // Start Server
-app.listen(PORT, () => console.log(`🚀 Server running on port ${PORT}`));
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`));

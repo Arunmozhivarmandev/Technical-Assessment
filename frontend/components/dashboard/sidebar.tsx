@@ -7,16 +7,20 @@ import { cn } from "@/lib/utils"
 
 interface SidebarProps {
   isOpen: boolean
+  role : string
   onClose: () => void
 }
 
-export function Sidebar({ isOpen, onClose }: SidebarProps) {
+export function Sidebar({ isOpen, role, onClose }: SidebarProps) {
   const pathname = usePathname()
 
   const links = [
-    { href: "/dashboard", label: "Dashboard", icon: Home },
-    { href: "/dashboard/employees/add", label: "Add Employee", icon: Plus },
+    { href: "/dashboard", label: "Dashboard", icon: Home }
   ]
+
+  if(role === "admin"){
+    links.push({ href: "/dashboard/employees/add", label: "Add Employee", icon: Plus })
+  }
 
   return (
     <>

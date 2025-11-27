@@ -52,7 +52,7 @@ export function EmployeeListView() {
       setEmployees(data)
       setTotalPages(response.meta.pages)
     } catch (err: any) {
-      setError(err.response?.data?.message || "Failed to fetch employees")
+      setError(err?.message || "Failed to fetch employees")
     } finally {
       setLoading(false)
     }
@@ -73,11 +73,11 @@ export function EmployeeListView() {
       await employeeAPI.delete(id)
       fetchEmployees()
     } catch (err: any) {
-      setError(err.response?.data?.message || "Failed to delete employee")
+      setError(err?.message || "Failed to delete employee")
     }
   }
 
-  const isUser = user?.role === "user" // 🔥 check role
+  const isAdmin = user?.role === "admin" 
 
   return (
     <div className="space-y-6">
@@ -87,7 +87,7 @@ export function EmployeeListView() {
           <h1 className="text-3xl font-bold text-foreground">Employees</h1>
           <p className="text-muted-foreground mt-1">Manage your employee directory</p>
         </div>
-        {!isUser && (
+        {isAdmin && (
           <Link href="/dashboard/employees/add">
             <Button size="lg">Add Employee</Button>
           </Link>
@@ -158,8 +158,8 @@ export function EmployeeListView() {
               <div className="overflow-x-auto">
                 <EmployeeTable
                   employees={employees}
-                  onDelete={isUser ? undefined : handleDelete} // hide delete
-                  hideActions={isUser} // pass a prop to hide Edit/Delete buttons in table
+                  onDelete={isAdmin ? handleDelete : undefined} // hide delete
+                  hideActions={isAdmin} // pass a prop to hide Edit/Delete buttons in table
                 />
               </div>
               <div className="border-t border-border p-4">

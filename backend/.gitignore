@@ -52,6 +52,4 @@ Thumbs.db
 # Optional: ignore local files
 *.local
 
-# Optional: ignore uploads/storage (if any)
-uploads/
-storage/
+
